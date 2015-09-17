@@ -1,12 +1,12 @@
 module Lita
   module Handlers
-    class Wtf < Handler
+    class Whatis < Handler
       route(
-        /^wtf(?:\s+is)?\s(?<term>\w+)(?:\?)?/,
+        /^whatis(?:\s+is)?\s(?<term>\w+)(?:\?)?/,
         :lookup,
         command: true,
         help: {
-          t('help.wtf.syntax') => t('help.wtf.desc')
+          t('help.whatis.syntax') => t('help.whatis.desc')
         }
       )
 
@@ -21,7 +21,7 @@ module Lita
 
       def lookup(response)
         term = response.match_data['term']
-        return response.reply(t('wtf.unknown', term: term)) unless known?(term)
+        return response.reply(t('whatis.unknown', term: term)) unless known?(term)
         response.reply(format_definition(term, definition(term)))
       end
 
@@ -35,7 +35,7 @@ module Lita
       private
 
       def format_definition(term, definition)
-        t('wtf.is', term: term, definition: definition)
+        t('whatis.is', term: term, definition: definition)
       end
 
       def known?(term)
@@ -52,6 +52,6 @@ module Lita
       end
     end
 
-    Lita.register_handler(Wtf)
+    Lita.register_handler(whatis)
   end
 end

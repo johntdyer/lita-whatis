@@ -6,7 +6,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 SimpleCov.start { add_filter '/spec/' }
 
-require 'lita-wtf'
+require 'lita-whatis'
 require 'lita/rspec'
 
 Lita.version_3_compatibility_mode = false
